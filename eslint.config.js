@@ -20,4 +20,19 @@ export default tseslint.config([
       globals: globals.browser,
     },
   },
+  {
+    files: ["**/*.test.{js,ts,jsx,tsx}"],
+    plugins: {
+      vitest,
+    },
+    languageOptions: {
+      globals: {
+        ...globals.node,
+        ...vitest.environments.env.globals,
+      },
+    },
+    rules: {
+      ...vitest.configs.recommended.rules,
+    },
+  }
 ])
