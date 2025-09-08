@@ -6,8 +6,9 @@ export function Giphy({ threeWords }: { threeWords: string }) {
   const [currentGif, setCurrentGif] = useState(0);
 
   useEffect(() => {
-    getGif(threeWords).then(gifList => setGifs(gifList));
-    setCurrentGif(0);
+    if (!threeWords.trim()) return
+    getGif(threeWords).then(gifList => setGifs(gifList))
+    setCurrentGif(0)
   }, [threeWords])
 
   const changeGif = () => {
